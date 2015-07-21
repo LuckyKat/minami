@@ -301,7 +301,8 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
                 itemsNav += '<li>' + linktoFn('', item.name);
                 itemsNav += '</li>';
             } else if ( !hasOwnProp.call(itemsSeen, item.longname) ) {
-                itemsNav += '<li>' + linktoFn(item.longname, item.name.replace(/^module:/, ''));
+                itemsNav += '<li><details><summary>' + item.name.replace(/^module:/, '') + '</summary>' 
+                    + linktoFn(item.longname, item.name.replace(/^module:/, ''));
                 if (methods.length) {
                     itemsNav += "<ul class='methods'>";
 
@@ -313,7 +314,7 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
 
                     itemsNav += "</ul>";
                 }
-                itemsNav += '</li>';
+                itemsNav += '</details></li>';
                 itemsSeen[item.longname] = true;
             }
         });
